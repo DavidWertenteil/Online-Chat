@@ -1,4 +1,5 @@
 <?php
+
 // a class to handle users in the database
 // CREATE TABLE `user` (
 //  `id` int(11) NOT NULL,
@@ -8,7 +9,7 @@
 //) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 class User_model extends CI_model {
-   
+
     // this function searches for the given email password user in the DB
     // returns the DB row (an array) or false
     public function login($email, $pass) {
@@ -34,4 +35,15 @@ class User_model extends CI_model {
         }
     }
 
+    public function connect($name, $email, $pass) {
+        // Create connection
+        if (trim($name) == "" || trim($email) == "" || trim($pass) == "") {
+            throw new Exception("Name, Email or password empty!");
+        }
+        $this->db->set('name', $name);
+        $this->db->set('email', $email);
+        $this->db->set('password', md5($pass));
+        $this->db->insert('user');
+    }
 }
+    
