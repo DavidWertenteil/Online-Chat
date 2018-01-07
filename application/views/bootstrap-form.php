@@ -11,18 +11,18 @@
     <body>
 
         <div class="container">
-            <?php /* uncomment to debug and print the session data here: */ 
-            /*print_r($_SESSION)*/ ?>
+            <?php /* uncomment to debug and print the session data here: */
+            /* print_r($_SESSION) */
+            ?>
             <h2>Please sign in</h2>
             <form class="form-horizontal" action="<?php echo site_url() ?>/login/checklogin" method="post">
-                <?php 
-                if ($error != "") { ?>
-                <div class="form-group alert alert-danger">
-                    <label class="col-sm-6">
-                        <?php echo $error;?>
-                    </label>
-                </div>
-                <?php
+                <?php if ($error != "") { ?>
+                    <div class="form-group alert alert-danger">
+                        <label class="col-sm-6">
+                            <?php echo $error; ?>
+                        </label>
+                    </div>
+                    <?php
                 }
                 ?>
                 <p>Hint: database contains a user with login "joe@gmail.com" and password "password".</p>
@@ -50,7 +50,13 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
                 </div>
+                
             </form>
+            <div class="form-group" action="<?php echo site_url() ?>/login/connect">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="register" class="btn btn-default">Register</button>
+                    </div>
+                </div>
         </div>
 
     </body>
