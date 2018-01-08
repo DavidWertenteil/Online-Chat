@@ -97,37 +97,4 @@ class Login extends CI_Controller {
         // we jump to the login page and it will recreate a new empty session
         redirect('login', 'refresh');
     }
-    
-     // logout button action
-    public function register() {
-        try {
-            // search the user in the DB - use form params (email,pwd)
-            $data = $this->User_model->login($this->input->post('email'), $this->input->post('pwd'));
-
-            if ($data) {
-                // successful login, store user data in session (look at the code in the user_profile view)
-                $this->session->set_userdata('user_id', $data['id']);
-                $this->session->set_userdata('user_email', $data['email']);
-                $this->session->set_userdata('user_name', $data['name']);
-                redirect('login/home', 'refresh');
-                // you could also 
-                // $this->load->view('user_profile', $data);
-                // but then the URL http://localhost/demos-ci/login/checkLogin should deal with
-                // multiple situations (logged in or not)
-                // it is better to have separate functions that deal with very different views
-                // this function acts like a router: it will redirect the user towarsd the user
-                // home page or towards the login form (in the else) 
-            } else {
-                // failed login, put an error message in the session
-                $this->session->set_userdata('error', 'Wrong credentials, try again.');
-                // jump to login page to display the login form 
-                redirect('login', 'refresh');
-            }
-        } catch (Exception $exc) {
-            // model validation failed
-            $this->session->set_userdata('error', 'Please enter an email and password');
-            redirect('login', 'refresh');
-        }
-    }
-
 }

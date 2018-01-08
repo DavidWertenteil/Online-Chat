@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Bootstrap Example</title>
+        <title>Register</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,21 +11,27 @@
     <body>
 
         <div class="container">
-            <?php /* uncomment to debug and print the session data here: */
+            <?php
+            /* uncomment to debug and print the session data here: */
             /* print_r($_SESSION) */
             ?>
-            <h2>Please sign in</h2>
-            <form class="form-horizontal" action="<?php echo site_url() ?>/login/checklogin" method="post">
-                <?php if ($error != "") { ?>
+            <h2>Please Register</h2>
+            <form class="form-horizontal" action="<?php echo site_url() ?>/register/checkregister" method="post">
+<?php if ($error != "") { ?>
                     <div class="form-group alert alert-danger">
                         <label class="col-sm-6">
-                            <?php echo $error; ?>
+    <?php echo $error; ?>
                         </label>
                     </div>
                     <?php
                 }
                 ?>
-                <p>Hint: database contains a user with login "joe@gmail.com" and password "password".</p>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="usr">Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="Enter name" name="usr">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Email:</label>
                     <div class="col-sm-10">
@@ -47,15 +53,11 @@
                 </div>
                 <div class="form-group">        
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default">Register</button>
                     </div>
                 </div>
-                
             </form>
-            <a href="register" >  
-                <button type="button" class="btn btn-primary">Register</button>
-            </a>
-         
+
         </div>
 
     </body>
