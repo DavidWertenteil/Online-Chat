@@ -56,10 +56,20 @@ class Login extends CI_Controller {
     // http://localhost/demos-ci/login/checkLogin
     // it redirects either to the login form or to the user home page
     public function checklogin() {
+
+        // Validation
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('pwd', 'pwd', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_userdata('error', 'Please enter an email and password');
+            redirect('login', 'refresh');
+        }
+        // End Validation
+
         $this->load->model('User_model');
         // this is how you write debugging output in application/controllers/logs
-        //log_message('debug', "Form email: " . $this->input->post('email'));
-
+//        log_message('debug', "Form email: " . $this->input->post('email'));
         try {
             // search the user in the DB - use form params (email,pwd)
             $data = $this->User_model->login($this->input->post('email'), $this->input->post('pwd'));
@@ -97,4 +107,5 @@ class Login extends CI_Controller {
         // we jump to the login page and it will recreate a new empty session
         redirect('login', 'refresh');
     }
+
 }

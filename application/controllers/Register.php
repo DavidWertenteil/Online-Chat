@@ -36,18 +36,31 @@ class Register extends CI_Controller {
 
     // this is the restricted access home page of the user
     // http://localhost/demos-ci/login/home
-
     // logout button action
     public function checkregister() {
+
+        // Validation
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('usr', 'usr', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('pwd', 'pwd', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_userdata('error', 'Please enter a name, email and password');
+            redirect('register', 'refresh');
+        }
+        // End validation
+        
         $this->load->model('User_model');
         try {
             // search the user in the DB - use form params (email,pwd)
-            $this->User_model->add($this->input->post('usr'), $this->input->post('email'), $this->input->post('pwd'));
+            $this->User_model->add_user($this->input->post('usr'), $this->input->post('email'), $this->input->post('pwd'));
             redirect('login/home', 'refresh');
         } catch (Exception $exc) {
             // model validation failed
-            $this->session->set_userdata('error', 'Please enter an email and password');
+            $this->session->set_userdata('error', 'Please enter a name, email and password');
             redirect('register/registerhome', 'refresh');
         }
     }
+
 }

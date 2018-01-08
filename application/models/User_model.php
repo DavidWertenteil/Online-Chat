@@ -35,10 +35,10 @@ class User_model extends CI_model {
         }
     }
 
-    public function add($name, $email, $pass) {
+    public function add_user($name, $email, $pass) {
         // Create connection
         if (trim($name) == "" || trim($email) == "" || trim($pass) == "") {
-            throw new Exception("Name, Email or password empty!");
+            throw new Exception("Name, email or password empty!");
         }
         $this->db->set('name', $name);
         $this->db->set('email', $email);

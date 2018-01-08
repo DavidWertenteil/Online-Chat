@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Bootstrap Example</title>
+        <title>Chat</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,7 +11,8 @@
     <body>
 
         <div class="container">
-            <?php /* uncomment to debug and print the session data here: */
+            <?php
+            /* uncomment to debug and print the session data here: */
             /* print_r($_SESSION) */
             ?>
             <h2>Please sign in</h2>
@@ -50,12 +51,17 @@
                         <button type="submit" class="btn btn-default">Submit</button>
                     </div>
                 </div>
-                
+                <div class="form-group"> 
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <p> Not yet registered? </p>
+                        <br/>
+                        <a href="register" >  
+                            <button type="button" class="btn btn-primary">Register</button>
+                        </a>
+                    </div>
+                </div>
             </form>
-            <a href="register" >  
-                <button type="button" class="btn btn-primary">Register</button>
-            </a>
-         
+
         </div>
 
     </body>
