@@ -60,7 +60,7 @@ class Register extends CI_Controller {
                 redirect('register/user_in_DB', 'refresh');
             }
         } catch (Exception $exc) {
-            $this->session->set_userdata('error', $exc);
+            $this->session->set_userdata('error', 'Please enter a name, email and password');
             redirect('register', 'refresh');
         }
     }

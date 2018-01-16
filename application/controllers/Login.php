@@ -83,7 +83,7 @@ class Login extends CI_Controller {
             }
         } catch (Exception $exc) {
             // Model validation failed
-            $this->session->set_userdata('error', $exc);
+            $this->session->set_userdata('error', 'Please enter an email and password');
             redirect('login', 'refresh');
         }
     }
