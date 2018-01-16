@@ -11,10 +11,6 @@
     <body>
 
         <div class="container">
-            <?php
-            /* uncomment to debug and print the session data here: */
-            /* print_r($_SESSION) */
-            ?>
             <h2>Please Register</h2>
             <form class="form-horizontal" action="<?php echo site_url() ?>/register/checkregister" method="post">
                 <?php if ($error != "") { ?>
@@ -42,13 +38,6 @@
                     <label class="control-label col-sm-2" for="pwd">Password:</label>
                     <div class="col-sm-10">          
                         <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" value="<?php echo $password ?>">
-                    </div>
-                </div>
-                <div class="form-group">        
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="remember"> Remember me</label>
-                        </div>
                     </div>
                 </div>
                 <div class="form-group">        

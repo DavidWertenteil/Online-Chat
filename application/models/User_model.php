@@ -16,14 +16,11 @@ class User_model extends CI_model {
         // validate params
         if (trim($email) == "" || trim($pass) == "")
             throw new Exception("Email or password empty!");
-        // search
+       
         // select * from user where email = $email and passord = $pwd
         $this->db->select('*');
         $this->db->from('user');
         $this->db->where('email', $email);
-        // we encrypt the password and compare to what's in the DB (encrypted with md5)
-        // note that md5 is an old function, today you should look at more sophisticated encryption
-        // with password_hash()
         $this->db->where('password', md5($pass));
 
         // execute the query
