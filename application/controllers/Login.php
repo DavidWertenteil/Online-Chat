@@ -57,20 +57,22 @@ class Login extends CI_Controller {
     // it redirects either to the login form or to the user home page
     public function checklogin() {
 
-        // Validation
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('pwd', 'pwd', 'required');
-        if ($this->form_validation->run() == FALSE) {
-            $this->session->set_userdata('error', 'Please enter an email and password');
-            redirect('login', 'refresh');
-        }
-        // End Validation
 
         $this->load->model('User_model');
+
         // this is how you write debugging output in application/controllers/logs
 //        log_message('debug', "Form email: " . $this->input->post('email'));
         try {
+            // Validation
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('pwd', 'pwd', 'required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->session->set_userdata('error', 'Please enter an email and password');
+                redirect('login', 'refresh');
+            }
+            // End Validation
+            //
             // search the user in the DB - use form params (email,pwd)
             $data = $this->User_model->login($this->input->post('email'), $this->input->post('pwd'));
 
@@ -80,13 +82,6 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('user_email', $data['email']);
                 $this->session->set_userdata('user_name', $data['name']);
                 redirect('login/home', 'refresh');
-                // you could also 
-                // $this->load->view('user_profile', $data);
-                // but then the URL http://localhost/demos-ci/login/checkLogin should deal with
-                // multiple situations (logged in or not)
-                // it is better to have separate functions that deal with very different views
-                // this function acts like a router: it will redirect the user towarsd the user
-                // home page or towards the login form (in the else) 
             } else {
                 // failed login, put an error message in the session
                 $this->session->set_userdata('error', 'Wrong credentials, try again.');
@@ -95,7 +90,7 @@ class Login extends CI_Controller {
             }
         } catch (Exception $exc) {
             // model validation failed
-            $this->session->set_userdata('error', 'Please enter an email and password');
+            $this->session->set_userdata('error', $exc);
             redirect('login', 'refresh');
         }
     }

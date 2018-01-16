@@ -31,7 +31,7 @@ class User_model extends CI_model {
             // return an array
             return $query->row_array();
         } else {
-            return false;
+            return FALSE;
         }
     }
 
@@ -42,8 +42,26 @@ class User_model extends CI_model {
         }
         $this->db->set('name', $name);
         $this->db->set('email', $email);
-        $this->db->set('password',md5($pass));
+        $this->db->set('password', md5($pass));
         $this->db->insert('user');
     }
+
+    public function check_user_in_db($email) {
+        // validate params
+        if (trim($email) == "") {
+            throw new Exception("Email is empty!");
+        }
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('email', $email);
+        $is_in_db = $this->db->get();
+
+        // Check email in db
+        if ($is_in_db->num_rows() == 1) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
 }
-    
