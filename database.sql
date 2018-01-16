@@ -27,29 +27,6 @@ USE `demos-ci`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `car`
---
-
-CREATE TABLE `car` (
-  `id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `car`
---
-
-INSERT INTO `car` (`id`, `name`) VALUES
-(1, 'Volvo S69'),
-(2, 'Hyundai i10'),
-(3, 'BMW 320'),
-(4, 'Honda Civic'),
-(5, 'Toyota Corolla'),
-(6, 'Renault Megane');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `chat`
 --
 
@@ -83,15 +60,6 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
 (3, 'Pam', 'pam@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99'),
 (4, 'Linda', 'linda@gmail.com', '5f4dcc3b5aa765d61d8327deb882cf99');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `car`
---
-ALTER TABLE `car`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `chat`
@@ -109,12 +77,6 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `car`
---
-ALTER TABLE `car`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `chat`
