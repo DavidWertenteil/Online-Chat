@@ -25,28 +25,14 @@ class Login extends CI_Controller {
             $data['error'] = $this->session->userdata('error');
         }
         // This is the login form
-        $this->load->view("bootstrap-form", $data);
+        $this->load->view("user_login", $data);
         // We don't want to show the error more than once
         // so we erase it after using it
         $this->session->set_userdata('error', '');
     }
 
     // This is the restricted access home page of the user
-    public function home() {
-        // Is user is already logged?
-        if ($this->session->userdata('user_id')) {
-            // User already logged in, let's get information from the session
-            // and go to the profile page
-            $data = array('name' => $this->session->userdata('user_name'),
-                'email' => $this->session->userdata('user_email'));
-            // Load the profile page
-            $this->load->view('user_profile', $data);
-        } else {
-            // Otherwise bring the login page
-            // redirect causes the browser to load a new page
-            redirect('login', 'refresh');
-        }
-    }
+    
 
     // Action of the login form
     // It redirects either to the login form or to the user home page
@@ -74,7 +60,7 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('user_id', $data['id']);
                 $this->session->set_userdata('user_email', $data['email']);
                 $this->session->set_userdata('user_name', $data['name']);
-                redirect('login/home', 'refresh');
+                redirect('chat/home', 'refresh');
             } else {
                 // Failed login, put an error message in the session
                 $this->session->set_userdata('error', 'Wrong credentials, try again.');
