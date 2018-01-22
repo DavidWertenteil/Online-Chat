@@ -12,7 +12,7 @@
 
         <div class="container">
             <h2>Please Register</h2>
-            <form class="form-horizontal" action="<?php echo site_url() ?>/register/checkregister" method="post" name="form">
+            <form class="form-horizontal" action="<?php echo site_url() ?>/register/checkregister" method="post">
                 <?php if ($error != "") { ?>
                     <div class="form-group alert alert-danger">
                         <label class="col-sm-6">
@@ -50,60 +50,6 @@
             </form>
 
         </div>
-
-
-        <script>
-            function Form(name)
-            {
-                this.name = name.replace(/ /g, "");
-                this.nameOK = function () {
-                    return (this.name !== "");
-                };
-
-                this.formOK = function () {
-                    return (this.nameOK());
-                };
-            }
-            ;
-            function NotOk(nameClass, nameId, nameMessage, message)
-            {
-                $(nameClass).removeClass('has-success has-feedback');
-                $(nameId).removeClass("glyphicon glyphicon-ok form-control-feedback");
-                $(nameClass).addClass('has-error has-feedback');
-                $(nameId).addClass("glyphicon glyphicon-remove form-control-feedback");
-                $(nameMessage).text(message);
-            }
-            ;
-            function isOk(nameClass, nameId, nameMessage)
-            {
-                $(nameClass).removeClass('has-error has-feedback');
-                $(nameId).removeClass("glyphicon glyphicon-remove form-control-feedback");
-                $(nameClass).addClass('has-success has-feedback');
-                $(nameId).addClass("glyphicon glyphicon-ok form-control-feedback");
-                $(nameMessage).text("");
-            }
-
-
-            $("form").submit(function () {
-                var myForm = new Form(document.forms["form"]["name"].value, $("input:checked").length);
-                if (!myForm.nameOK()) { //If the name is bad.
-                    NotOk('.form-name', '#nameIkon', '#nameMessage', "Plaese enter a name.");
-                } else {
-                    isOk('.form-name', '#nameIkon', '#nameMessage');
-                }
-                ;
-
-            });
-            $("button").click(function () {
-                $("form").submit();
-            });
-            $(".form-horizontal").submit(function (event) {
-                event.preventDefault();
-            });
-
-
-
-        </script>
     </body>
 </html>
 
