@@ -1,21 +1,15 @@
 <?php
 
-// a class to handle users in the database
-// CREATE TABLE `user` (
-//  `id` int(11) NOT NULL,
-//  `name` varchar(64) NOT NULL,
-//  `email` varchar(64) NOT NULL,
-//  `password` varchar(64) NOT NULL
-//) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+// With this class we manege the comunication between DB and server
 class User_model extends CI_model {
 
     // this function searches for the given email password user in the DB
     // returns the DB row (an array) or false
     public function login($email, $pass) {
         // validate params
-        if (trim($email) == "" || trim($pass) == "")
-            throw new Exception("Email or password empty!");
+        if (trim($email) == "" || trim($pass) == ""){
+            throw new Exception("Email or password empty!");            
+        }
        
         // select * from user where email = $email and passord = $pwd
         $this->db->select('*');

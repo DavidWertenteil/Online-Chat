@@ -50,7 +50,7 @@ class Register extends CI_Controller {
             // Check if user is in database
             if ($this->User_model->check_user_in_db($this->input->post('email')) == TRUE) {
                 $this->User_model->add_user($this->input->post('usr'), $this->input->post('email'), $this->input->post('pwd'));
-                redirect('login/home', 'refresh');
+                redirect('login', 'refresh');
             } else {
                 // If user is in database: save the session and print error
                 $this->session->set_userdata('user_name', $this->input->post('usr'));

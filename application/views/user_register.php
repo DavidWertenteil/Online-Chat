@@ -26,8 +26,6 @@
                     <label class="control-label col-sm-2" for="usr">Name:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="name" placeholder="Enter name" name="usr" value="<?php echo $name ?>" required>
-                        <span id="nameIkon"></span>
-                        <p id="nameMessage"></p>
                     </div>
                 </div>
                 <div class="form-group">
