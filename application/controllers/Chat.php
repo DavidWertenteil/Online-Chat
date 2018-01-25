@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*  
+ * Authors: DavidWertenteil ReutTzadok
+*/
+
 //controller........................... 
 
 class Chat extends CI_Controller{

@@ -2,9 +2,9 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/* this controller demonstrates a bootstrap registaer form 
- * authors: DavidWertenteil ReutTzadok
- *  */
+/*  
+ * Authors: DavidWertenteil ReutTzadok
+*/
 
 class Register extends CI_Controller {
 

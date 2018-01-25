@@ -2,9 +2,9 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/* this controller demonstrates a bootstrap login form 
- * author: DavidWertenteil ReutTzadok
- *  */
+/*  
+ * Authors: DavidWertenteil ReutTzadok
+*/
 
 class Login extends CI_Controller {
 
