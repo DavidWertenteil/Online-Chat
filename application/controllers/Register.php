@@ -38,7 +38,10 @@ class Register extends CI_Controller {
         $this->load->model('User_model');
 
         try {
-            // Validation
+             // Validation
+            if(trim($this->input->post('usr')) == "" || trim($this->input->post('email')) == "" || trim($this->input->post('pwd')) == ""){
+                throw new Exception("Name, email or password empty!"); 
+            }
             $this->form_validation->set_rules('usr', 'usr', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required');
             $this->form_validation->set_rules('pwd', 'pwd', 'required');

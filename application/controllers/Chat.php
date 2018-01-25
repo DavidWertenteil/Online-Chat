@@ -22,7 +22,10 @@ class Chat extends CI_Controller{
         $this->load->model('Chat_model');
         $this->load->library('form_validation');
         try {
-            // Validation
+             // Validation
+            if(trim($this->input->post('msg')) == ""){
+                throw new Exception("Message is empty!"); 
+            }
             $this->form_validation->set_rules('msg', 'new_message', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $this->session->set_userdata('error', 'Please enter a message');

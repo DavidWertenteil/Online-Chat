@@ -44,6 +44,10 @@ class Login extends CI_Controller {
 
         try {
             // Validation
+            if(trim($this->input->post('email')) == "" || trim($this->input->post('pwd')) == ""){
+                throw new Exception("Email or password empty!"); 
+            }
+            
             $this->form_validation->set_rules('email', 'Email', 'required');
             $this->form_validation->set_rules('pwd', 'pwd', 'required');
             if ($this->form_validation->run() == FALSE) {
